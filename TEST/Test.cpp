@@ -37,6 +37,7 @@ map2.tiles[X][Y+1] = 9;
 map2.tiles[X+1][Y-1] = 9;
 map2.tiles[X+1][Y] = 9;
 map2.tiles[X+1][Y+1] = 9;
+map2.load();
 string g = schermo.Astar(obiettivo);
 ASSERT_EQ(g, "Search terminated. Did not find goal state") << "Posizione finale raggiunta correttamente";
 std::cout<<"\nObiettivo non raggiunto"<<endl;

@@ -36,7 +36,7 @@ void Schermo::generaSchermo(Obiettivo obiettivo) {
         Mappa::crea(1).DisegnaMappa(window);
         obiettivo.drawPersonaggio(window);
 //        sf::Font font;
-//        if (!font.loadFromFile("/Users/giuliabellini/Desktop/FreshCoconut.ttf"))
+//        if (!font.loadFromFile("./FreshCoconut.ttf"))
 //            return;
 //        sf::Text text("OBIETTIVO RAGGIUNTO", font, 30);
 //        text.setPosition(Mappa::crea().getRows()*TILE/7, Mappa::crea().getColumns()*TILE/2);

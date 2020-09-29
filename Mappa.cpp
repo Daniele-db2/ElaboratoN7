@@ -95,7 +95,7 @@ int Mappa::GetMap( int x, int y) {
 }
 
 bool Mappa::load() {
-    if (!tex.loadFromFile("/Users/giuliabellini/Desktop/tileset.png"))// load the map tileset texture
+    if (!tex.loadFromFile("./tileset.png"))// load the map tileset texture
         return false;
     m_vertices.setPrimitiveType(sf::Quads); // resize the vertex array to fit the tile size
     m_vertices.resize(rows * columns * 4);// populate the vertex array, with one quad per tile

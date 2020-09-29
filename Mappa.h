@@ -24,9 +24,7 @@ private:
     vector<int> type;
 public:
     Tile tile;
-    //explicit Mappa(int dim);
     explicit Mappa(int z);
-    //static Mappa&crea(int dim = rand()%3);
     static Mappa&crea(int z);
     int getColumns() const;
     int getRows() const ;
