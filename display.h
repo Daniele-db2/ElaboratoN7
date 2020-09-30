@@ -12,7 +12,6 @@ using namespace sf;
 class Schermo {
 public:
     Schermo();
-    //Mappa prova(char x);
     ~Schermo();
     string generaSchermo(Obiettivo obiettivo);
     string Astar(Obiettivo obiettivo);

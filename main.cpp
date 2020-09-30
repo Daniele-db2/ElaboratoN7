@@ -29,7 +29,7 @@ int main() {
         if (!font.loadFromFile("./ChickenQuiche.ttf"))
             return 1;
         sf::Text text(fs, font, 50);
-        text.setPosition( 275, 400);
+        text.setPosition( 0, 400);
         wn.draw(text);
         wn.display();
     }

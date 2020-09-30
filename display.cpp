@@ -156,3 +156,4 @@ string Schermo::Astar( Obiettivo obiettivo) {
 void Schermo::setEseguito(bool eseguito) {
     Schermo::eseguito = eseguito;
 }
+
