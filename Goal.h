@@ -3,6 +3,7 @@
 
 #include </Users/giuliabellini/Desktop/ElaboratoN7_/SFML-2.5.1/include/SFML/Graphics.hpp>
 #include </Users/giuliabellini/Desktop/ElaboratoN7_/SFML-2.5.1/include/SFML/Graphics/Sprite.hpp>
+#include "Mappa.h"
 
 using namespace sf;
 
@@ -10,7 +11,7 @@ using namespace sf;
 
 class Obiettivo {
 public:
-    Obiettivo();
+    explicit Obiettivo(Mappa *mappa);
     Obiettivo(int x,int y);
     virtual ~Obiettivo();
     void drawPersonaggio(RenderWindow &window);

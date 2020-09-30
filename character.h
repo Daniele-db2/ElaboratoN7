@@ -11,7 +11,7 @@ using namespace std;
 
 class Personaggio {
 public:
-    Personaggio();
+    explicit Personaggio(Mappa *mappa);
     Personaggio(int x, int y);
     int getX() const;
     int getY() const;
@@ -20,11 +20,9 @@ public:
     int getIndex() const;
     const vector<Vector2f> &getCoordinate() const;
     void DisegnaPersonaggio(RenderWindow &window);
-    static Personaggio& crea();
+    static Personaggio& crea(Mappa *mappa);
     static Personaggio& crea(int x, int y);
     void setCoordinate(int x, int y);
-    Mappa MappaP();
-    //Personaggio prova(Mappa m);
 
 private:
     int x;

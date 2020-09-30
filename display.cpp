@@ -14,16 +14,16 @@
 Schermo::~Schermo() = default;
 
 
-Schermo::Schermo() {
-    Mappa::crea(1).load();
-    view.setSize(Mappa::crea(1).getRows()*TILE, Mappa::crea(1).getColumns()*TILE);
-    view.setCenter(Mappa::crea(1).getRows()*TILE/2, Mappa::crea(1).getColumns()*TILE/2);
+Schermo::Schermo(Mappa *mappa) {
+    mappa->load();
+    view.setSize(mappa->getRows()*TILE, mappa->getColumns()*TILE);
+    view.setCenter(mappa->getRows()*TILE/2, mappa->getColumns()*TILE/2);
     sf::WindowHandle handle = window.getSystemHandle(); //Get the OS-specific handle of the window
     window.create(VideoMode(800,600),"A* ALGORITHM");
     window.setFramerateLimit(60); //Limit the framerate to a maximum fixed frequenc,Parameters: Framerate limit, in frames per seconds
 }
 
-string Schermo::generaSchermo(Obiettivo obiettivo) {
+string Schermo::generaSchermo(Obiettivo obiettivo, Mappa *mappa) {
     string fstring;
 
     while (window.isOpen()) {
@@ -35,25 +35,25 @@ string Schermo::generaSchermo(Obiettivo obiettivo) {
         window.setView(view); //Change the current active view
         window.setActive(); //Activate or deactivate the window as the current target for OpenGL rendering.
         window.clear();
-        Mappa::crea(1).DisegnaMappa(window);
+        mappa->DisegnaMappa(window);
         obiettivo.drawPersonaggio(window);
 
         if (!eseguito)
-            fstring = Astar(obiettivo);
+            fstring = Astar(obiettivo, mappa);
         this->setEseguito(true);
 
         times=clock.getElapsedTime(); //returns the time elapsed since the last call to restart()
         if(times.asSeconds()>1){
-            Personaggio::crea().setPos();
+            Personaggio::crea(mappa).setPos();
             clock.restart(); //puts the time counter back to zero
         }
-        Personaggio::crea().DisegnaPersonaggio(window);
+        Personaggio::crea(mappa).DisegnaPersonaggio(window);
         window.display();//rendering has been done for the current frame, in order to show it on screen
     }
     return fstring;
 }
 
-string Schermo::Astar( Obiettivo obiettivo) {
+string Schermo::Astar( Obiettivo obiettivo,Mappa *mappa) {
     string goal;
 
     AStarSearch<MapSearchNode> astarsearch;
@@ -63,8 +63,8 @@ string Schermo::Astar( Obiettivo obiettivo) {
 
         // Create a start state
         MapSearchNode nodeStart;
-        nodeStart.x = Personaggio::crea().getX();
-        nodeStart.y = Personaggio::crea().getY();
+        nodeStart.x = Personaggio::crea(mappa).getX();
+        nodeStart.y = Personaggio::crea(mappa).getY();
         cout << "Punto di partenza (" << nodeStart.x << "," << nodeStart.y << ")" << endl;
 
         // Define the goal state
@@ -127,13 +127,13 @@ string Schermo::Astar( Obiettivo obiettivo) {
 #endif
 
             int steps = 0;
-            node->PrintNodeInfo();
+            node->PrintNodeInfo(mappa);
             for (;;) {
                 node = astarsearch.GetSolutionNext();
                 if (!node) {
                     break;
                 }
-                node->PrintNodeInfo();
+                node->PrintNodeInfo(mappa);
                 steps++;
             };
             cout << "Solution steps " << steps << endl;

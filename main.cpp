@@ -8,10 +8,11 @@
 
 int main() {
     srand((unsigned int)time(NULL));
-    Personaggio p=Personaggio::crea();
-    Obiettivo o;
-    Schermo schermo;
-    string fs = schermo.generaSchermo(o);
+    Mappa *mappa = Mappa::crea(1);
+    Personaggio p = Personaggio::crea(mappa);
+    Obiettivo o = Obiettivo(mappa);
+    Schermo schermo = Schermo(mappa);
+    string fs = schermo.generaSchermo(o,mappa);
     std::cout<<fs<<endl;
     Event event;
     View view;

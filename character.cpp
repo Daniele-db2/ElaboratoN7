@@ -31,13 +31,13 @@ void Personaggio::setPos() {
         Personaggio::sprite.setPosition(coordinate[index++]);
 }
 
-Personaggio::Personaggio() {
+Personaggio::Personaggio(Mappa *mappa) {
     int xi;
     int yi;
     do {
-        xi = static_cast<int>(rand() %  Mappa::crea(1).getColumns());
-        yi = static_cast<int>(rand() % Mappa::crea(1).getRows());
-    }while (Mappa::crea(1).getTiles(xi,yi) >= 9);
+        xi = static_cast<int>(rand() %  mappa->getColumns());
+        yi = static_cast<int>(rand() % mappa->getRows());
+    }while (mappa->getTiles(xi,yi) >= 9);
     this->x=xi;
     this->y=yi;
     texture.loadFromFile("./taxi.png");
@@ -47,8 +47,8 @@ Personaggio::Personaggio() {
     index=0;
 }
 
-Personaggio &Personaggio::crea() {
-    static Personaggio personaggio;
+Personaggio &Personaggio::crea(Mappa *mappa) {
+    static Personaggio personaggio(mappa);
     return personaggio;
 }
 
@@ -75,6 +75,3 @@ Personaggio &Personaggio::crea(int x, int y) {
     return personaggio;
 }
 
-Mappa Personaggio::MappaP() {
-    return Mappa(0);
-}

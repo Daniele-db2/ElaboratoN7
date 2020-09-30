@@ -24,6 +24,9 @@ if (SFML_FOUND)
     target_link_libraries(ElaboratoN7 ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 endif ()
 
+#set(CMAKE_EXE_LINKER_FLAGS "-Xlinker -v -v")
+#target_compile_options(ElaboratoN7 PRIVATE -v)
+
 include_directories(${gtest_SOURCE_DIR}/include $gtest_SOURCE_DIR}../include)
 add_subdirectory(/Users/giuliabellini/Desktop/ElaboratoN7_/TEST)
 add_library(core ${SOURCE_FILE})

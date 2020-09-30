@@ -11,10 +11,10 @@ using namespace sf;
 
 class Schermo {
 public:
-    Schermo();
+    explicit Schermo(Mappa *mappa);
     ~Schermo();
-    string generaSchermo(Obiettivo obiettivo);
-    string Astar(Obiettivo obiettivo);
+    string generaSchermo(Obiettivo obiettivo, Mappa *mappa);
+    string Astar(Obiettivo obiettivo, Mappa *mappa);
 
 private:
     View view; //a camera in the 2D scene

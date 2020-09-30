@@ -15,8 +15,8 @@ bool MapSearchNode::IsSameState( MapSearchNode &rhs ){
     return false;
 }
 
-void MapSearchNode::PrintNodeInfo(){
-    Personaggio::crea().setCoordinate(x*TILE,y*TILE);
+void MapSearchNode::PrintNodeInfo(Mappa *mappa){
+    Personaggio::crea(mappa).setCoordinate(x*TILE,y*TILE);
     char str[100];
     sprintf( str, "Node position : (%d,%d)\n", x,y );
     cout << str;
@@ -53,7 +53,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
     MapSearchNode NewNode;
 
     // push each possible move except allowing the search to go backwards
-    if( (Mappa::crea( 1).GetMap( x-1, y ) < 9)
+    if( (Mappa::crea( 1)->GetMap( x-1, y ) < 9)
         && !((parent_x == x-1) && (parent_y == y))
             )
     {
@@ -61,7 +61,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
         astarsearch->AddSuccessor( NewNode );
     }
 
-    if( (Mappa::crea(1).GetMap( x, y-1 ) < 9)
+    if( (Mappa::crea(1)->GetMap( x, y-1 ) < 9)
         && !((parent_x == x) && (parent_y == y-1))
             )
     {
@@ -69,7 +69,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
         astarsearch->AddSuccessor( NewNode );
     }
 
-    if( (Mappa::crea(1).GetMap( x+1, y ) < 9)
+    if( (Mappa::crea(1)->GetMap( x+1, y ) < 9)
         && !((parent_x == x+1) && (parent_y == y))
             )
     {
@@ -78,7 +78,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
     }
 
 
-    if( (Mappa::crea(1).GetMap( x, y+1 ) < 9)
+    if( (Mappa::crea(1)->GetMap( x, y+1 ) < 9)
         && !((parent_x == x) && (parent_y == y+1))
             )
     {
@@ -86,7 +86,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
         astarsearch->AddSuccessor( NewNode );
     }
 
-    if( (Mappa::crea(1).GetMap( x-1, y-1 ) < 9)
+    if( (Mappa::crea(1)->GetMap( x-1, y-1 ) < 9)
         && !((parent_x == x-1) && (parent_y == y-1))
             )
     {
@@ -94,7 +94,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
         astarsearch->AddSuccessor( NewNode );
     }
 
-    if( (Mappa::crea(1).GetMap( x+1, y-1 ) < 9)
+    if( (Mappa::crea(1)->GetMap( x+1, y-1 ) < 9)
         && !((parent_x == x+1) && (parent_y == y-1))
             )
     {
@@ -102,7 +102,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
         astarsearch->AddSuccessor( NewNode );
     }
 
-    if( (Mappa::crea(1).GetMap( x+1, y+1 ) < 9)
+    if( (Mappa::crea(1)->GetMap( x+1, y+1 ) < 9)
         && !((parent_x == x+1) && (parent_y == y+1))
             )
     {
@@ -111,7 +111,7 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
     }
 
 
-    if( (Mappa::crea(1).GetMap( x-1, y+1 ) < 9)
+    if( (Mappa::crea(1)->GetMap( x-1, y+1 ) < 9)
         && !((parent_x == x-1) && (parent_y == y+1))
             )
     {
@@ -126,6 +126,6 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 // conceptually where we're moving
 
 float MapSearchNode::GetCost( MapSearchNode &successor ) {
-    return (float) Mappa::crea(1).GetMap(x, y);
+    return (float) Mappa::crea(1)->GetMap(x, y);
 
 }

@@ -22,10 +22,11 @@ private:
     int rows=0;
     int columns=0;
     vector<int> type;
+    explicit Mappa(int z);
+    static Mappa* mappa;
 public:
     Tile tile;
-    explicit Mappa(int z);
-    static Mappa&crea(int z);
+    static Mappa*crea(int z);
     int getColumns() const;
     int getRows() const ;
     int GetMap(int x, int y);
@@ -33,7 +34,7 @@ public:
     bool load();
     void DisegnaMappa(RenderWindow &window);
     int getTiles(int x, int y) const;
-    vector <vector<int>> tiles;
+    vector <vector<int> > tiles;
 };
 
 #endif //ELABORATO_N7_MAPPA_H

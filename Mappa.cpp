@@ -1,3 +1,4 @@
+
 #include "Mappa.h"
 #include <sstream>
 #include <cstdlib>
@@ -9,8 +10,13 @@
 using namespace std;
 using namespace sf;
 
-Mappa &Mappa::crea(int z) {
-    static Mappa mappa(z);
+Mappa *mappa = 0;
+
+Mappa *Mappa::crea(int z) {
+    if (mappa == 0){
+        mappa = new Mappa(z);
+        return mappa;
+    }
     return mappa;
 }
 
@@ -139,4 +145,3 @@ int Mappa::getTiles(int x, int y) const {
 void Mappa::DisegnaMappa(RenderWindow &window) {
     window.draw(m_vertices, states);
 }
-

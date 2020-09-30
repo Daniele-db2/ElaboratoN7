@@ -26,7 +26,7 @@ public:
 
 
 
-    void PrintNodeInfo();
+    void PrintNodeInfo(Mappa *mappa);
 
 
 };

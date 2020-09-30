@@ -2,13 +2,13 @@
 #include "Mappa.h"
 #define TILE 32
 
-Obiettivo::Obiettivo() {
+Obiettivo::Obiettivo(Mappa *mappa) {
     int xf;
     int yf;
     do {
-        xf = static_cast<int>(rand() % Mappa::crea(1).getColumns());
-        yf = static_cast<int>(rand() % Mappa::crea(1).getRows());
-    }while (Mappa::crea(1).getTiles(xf,yf) >= 9);
+        xf = static_cast<int>(rand() % mappa->getColumns());
+        yf = static_cast<int>(rand() % mappa->getRows());
+    }while (mappa->getTiles(xf,yf) >= 9);
     this->x=xf;
     this->y= yf;
     texture.loadFromFile("./goal.png");
