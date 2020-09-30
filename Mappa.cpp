@@ -10,14 +10,14 @@
 using namespace std;
 using namespace sf;
 
-Mappa *mappa = 0;
+Mappa *map = 0;
 
 Mappa *Mappa::crea(int z) {
-    if (mappa == 0){
-        mappa = new Mappa(z);
-        return mappa;
+    if (map == 0){
+        map = new Mappa(z);
+        return map;
     }
-    return mappa;
+    return map;
 }
 
 Mappa::Mappa(int z) {

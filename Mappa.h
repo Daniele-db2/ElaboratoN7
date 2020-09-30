@@ -23,10 +23,10 @@ private:
     int columns=0;
     vector<int> type;
     explicit Mappa(int z);
-    static Mappa* mappa;
+    static Mappa* map;
 public:
     Tile tile;
-    static Mappa*crea(int z);
+    static Mappa* crea(int z);
     int getColumns() const;
     int getRows() const ;
     int GetMap(int x, int y);
