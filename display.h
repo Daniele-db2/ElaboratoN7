@@ -14,7 +14,7 @@ public:
     Schermo();
     //Mappa prova(char x);
     ~Schermo();
-    void generaSchermo(Obiettivo obiettivo);
+    string generaSchermo(Obiettivo obiettivo);
     string Astar(Obiettivo obiettivo);
 
 private:

@@ -23,26 +23,23 @@ Schermo::Schermo() {
     window.setFramerateLimit(60); //Limit the framerate to a maximum fixed frequenc,Parameters: Framerate limit, in frames per seconds
 }
 
-void Schermo::generaSchermo(Obiettivo obiettivo) {
+string Schermo::generaSchermo(Obiettivo obiettivo) {
+    string fstring;
 
     while (window.isOpen()) {
         while (window.pollEvent(event)) { //Pop the event on top of the event queue, if any, and return it.
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed) {
                 window.close();
+            }
         }
         window.setView(view); //Change the current active view
         window.setActive(); //Activate or deactivate the window as the current target for OpenGL rendering.
         window.clear();
         Mappa::crea(1).DisegnaMappa(window);
         obiettivo.drawPersonaggio(window);
-//        sf::Font font;
-//        if (!font.loadFromFile("./FreshCoconut.ttf"))
-//            return;
-//        sf::Text text("OBIETTIVO RAGGIUNTO", font, 30);
-//        text.setPosition(Mappa::crea().getRows()*TILE/7, Mappa::crea().getColumns()*TILE/2);
 
         if (!eseguito)
-            Astar(obiettivo);
+            fstring = Astar(obiettivo);
         this->setEseguito(true);
 
         times=clock.getElapsedTime(); //returns the time elapsed since the last call to restart()
@@ -52,11 +49,8 @@ void Schermo::generaSchermo(Obiettivo obiettivo) {
         }
         Personaggio::crea().DisegnaPersonaggio(window);
         window.display();//rendering has been done for the current frame, in order to show it on screen
-//        sleep(times);
-//        window.draw(text);
-//        window.display();
     }
-
+    return fstring;
 }
 
 string Schermo::Astar( Obiettivo obiettivo) {
@@ -153,9 +147,6 @@ string Schermo::Astar( Obiettivo obiettivo) {
 
         // Display the number of loops the search went through
         cout << "SearchSteps : " << SearchSteps << "\n"<<endl;
-        cout<<"/////////////////////////"<<endl;
-        cout<<"///"<<goal<<"///"<<endl;
-        cout<<"/////////////////////////"<<endl;
         SearchCount++;
         astarsearch.EnsureMemoryFreed();
     }
@@ -165,5 +156,3 @@ string Schermo::Astar( Obiettivo obiettivo) {
 void Schermo::setEseguito(bool eseguito) {
     Schermo::eseguito = eseguito;
 }
-
-
