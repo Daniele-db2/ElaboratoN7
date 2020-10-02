@@ -22,11 +22,11 @@ TEST(DimensioneMappa, Mappatest1){
 
 TEST(PosizionePersonaggio,check) {
     Mappa *map2 = Mappa::crea(0);
-    Personaggio pers = Personaggio::crea(map2);
+    Personaggio pers = Personaggio::crea();
     int x = (rand()% (map2->getColumns()/2)+5);
     int y = (rand() % (map2->getRows()/2)+5);
     Obiettivo obiettivo = Obiettivo(x, y);
-    Schermo schermo(map2);
+    Schermo schermo;
     int X = pers.getX();
     int Y = pers.getY();
     map2->tiles[X-1][Y-1] = 204;
@@ -38,7 +38,7 @@ TEST(PosizionePersonaggio,check) {
     map2->tiles[X+1][Y] = 204;
     map2->tiles[X+1][Y+1] = 204;
     map2->load();
-    string g = schermo.Astar(obiettivo, map2);
+    string g = schermo.Astar(obiettivo);
     ASSERT_EQ(g, "Search terminated. Did not find goal state") << "Posizione finale raggiunta correttamente";
     std::cout<<"\nObiettivo non raggiunto"<<endl;
 }

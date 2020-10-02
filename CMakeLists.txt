@@ -7,7 +7,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(ElaboratoN7 Mappa.h Mappa.cpp MapSearchNode.h MapSearchNode.cpp stlastar.h main.cpp fsa.h display.h display.cpp character.h character.cpp Goal.h Goal.cpp Tile.cpp Tile.h)
 
-set(SOURCE_FILE Mappa.h Mappa.cpp MapSearchNode.h MapSearchNode.cpp stlastar.h main.cpp fsa.h display.h display.cpp character.h character.cpp Goal.h Goal.cpp Tile.cpp Tile.h)
+set(SOURCE_FILE ./Mappa.h ./Mappa.cpp ./MapSearchNode.h ./MapSearchNode.cpp ./stlastar.h ./main.cpp ./fsa.h ./display.h ./display.cpp ./character.h ./character.cpp ./Goal.h ./Goal.cpp ./Tile.cpp ./Tile.h)
+
+set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries")
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules")
 

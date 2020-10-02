@@ -11,7 +11,7 @@ using namespace sf;
 
 class Obiettivo {
 public:
-    explicit Obiettivo(Mappa *mappa);
+    explicit Obiettivo();
     Obiettivo(int x,int y);
     virtual ~Obiettivo();
     void drawPersonaggio(RenderWindow &window);

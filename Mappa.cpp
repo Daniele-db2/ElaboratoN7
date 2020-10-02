@@ -5,18 +5,21 @@
 #include <iostream>
 #include <istream>
 
+
 #define TILE 32
 
 using namespace std;
 using namespace sf;
 
-Mappa *map = 0;
+//Mappa  *map = 0;
 
 Mappa *Mappa::crea(int z) {
-    if (map == 0){
-        map = new Mappa(z);
-        return map;
-    }
+//    if (map == 0){
+//        map = new Mappa(z);
+//        return map;
+//    }
+//    return map;
+    static auto *map = new Mappa(z);
     return map;
 }
 

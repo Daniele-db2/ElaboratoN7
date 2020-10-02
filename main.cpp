@@ -2,17 +2,18 @@
 #include <cmath>
 #include "display.h"
 #include "character.h"
+#include "Goal.h"
+#include "Mappa.h"
 
 #define TILE 32
 
 
 int main() {
     srand((unsigned int)time(NULL));
-    Mappa *mappa = Mappa::crea(1);
-    Personaggio p = Personaggio::crea(mappa);
-    Obiettivo o = Obiettivo(mappa);
-    Schermo schermo = Schermo(mappa);
-    string fs = schermo.generaSchermo(o,mappa);
+    Personaggio p = Personaggio::crea();
+    Obiettivo o = Obiettivo();
+    Schermo schermo = Schermo();
+    string fs = schermo.generaSchermo(o);
     std::cout<<fs<<endl;
     Event event;
     View view;

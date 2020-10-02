@@ -3,12 +3,12 @@
 #ifndef ELABORATO_N7_MAPPA_H
 #define ELABORATO_N7_MAPPA_H
 
-#include <cstdlib>
 #include <string>
 #include <vector>
 #include <fstream>
 #include </Users/giuliabellini/Desktop/ElaboratoN7_/SFML-2.5.1/include/SFML/Graphics.hpp>
 #include "Tile.h"
+
 
 using namespace sf;
 
@@ -22,8 +22,8 @@ private:
     int rows=0;
     int columns=0;
     vector<int> type;
+    //static Mappa* map;
     explicit Mappa(int z);
-    static Mappa* map;
 public:
     Tile tile;
     static Mappa* crea(int z);

@@ -15,8 +15,8 @@ bool MapSearchNode::IsSameState( MapSearchNode &rhs ){
     return false;
 }
 
-void MapSearchNode::PrintNodeInfo(Mappa *mappa){
-    Personaggio::crea(mappa).setCoordinate(x*TILE,y*TILE);
+void MapSearchNode::PrintNodeInfo(){
+    Personaggio::crea().setCoordinate(x*TILE,y*TILE);
     char str[100];
     sprintf( str, "Node position : (%d,%d)\n", x,y );
     cout << str;
