@@ -11,15 +11,11 @@
 using namespace std;
 using namespace sf;
 
-//Mappa  *map = 0;
+Mappa *Mappa::map = nullptr;
 
 Mappa *Mappa::crea(int z) {
-//    if (map == 0){
-//        map = new Mappa(z);
-//        return map;
-//    }
-//    return map;
-    static auto *map = new Mappa(z);
+    if (map == nullptr)
+        map = new Mappa(z);
     return map;
 }
 

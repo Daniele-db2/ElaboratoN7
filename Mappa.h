@@ -22,7 +22,8 @@ private:
     int rows=0;
     int columns=0;
     vector<int> type;
-    //static Mappa* map;
+    static Mappa* map;
+protected:
     explicit Mappa(int z);
 public:
     Tile tile;
