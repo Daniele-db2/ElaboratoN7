@@ -30,8 +30,6 @@ Mappa::Mappa(int z) {
 
         fstream mapTextFile;
         mapTextFile.open("./Maps/" + s);
-        cout << "ALGORITMO A* CON UTILIZZO DI MAPPA: " << endl;
-        cout << s << endl;
 
         int i = 0;
         string line;
